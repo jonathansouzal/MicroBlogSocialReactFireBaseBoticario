@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import Profile from './screens/Profile'
 import Login from './screens/Login'
+import Register from './screens/Register'
 
 const Stack = createStackNavigator()
 
@@ -28,6 +29,13 @@ export default function NavigationLogin() {
           component={Login}
           options={{
             title: 'Login',
+          }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{
+            title: 'Registrar',
           }}
         />
       </Stack.Navigator>
