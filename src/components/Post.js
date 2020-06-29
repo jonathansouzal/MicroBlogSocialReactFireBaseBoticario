@@ -9,15 +9,19 @@ import Author from './Author'
 import Comments from './Comments'
 import AddComment from './AddComment'
 
-export default function Post(props) {
-    return (
-        <View style={styles.container}>
-            <Image source={props.imagePost} style={styles.image} />
-            <Author email='teste@gmail.com' nickname='Fulano o autor' />
-            <Comments comments={props.comments} />
-            <AddComment />
-        </View>
-    )
+export default class Post extends Component  {
+    render() {
+        return (
+            <View style={styles.container}>
+                <Image source={this.props.imagePost} style={styles.image} />
+                <Author 
+                    email={this.props.email} 
+                    nickname={this.props.nickname} />
+                <Comments comments={this.props.comments} />
+                <AddComment />
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
