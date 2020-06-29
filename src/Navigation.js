@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Feed from './screens/Feed'
+import AddPhoto from './screens/AddPhoto'
+import NavigationLogin from './NavigationLogin'
 
 const Tab = createBottomTabNavigator()
 
@@ -23,7 +25,7 @@ export default function Navigation() {
         />
         <Tab.Screen 
             name="Postar" 
-            component={Feed} 
+            component={AddPhoto} 
             options={{
                 tabBarLabel: 'Postar',
                 tabBarIcon: ({ color, size }) => (
@@ -33,7 +35,7 @@ export default function Navigation() {
         />
         <Tab.Screen 
             name="Profile" 
-            component={Feed} 
+            component={NavigationLogin} 
             options={{
                 tabBarLabel: 'Profile',
                 tabBarIcon: ({ color, size }) => (
