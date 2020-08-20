@@ -10,7 +10,7 @@ const Stack = createStackNavigator()
 export default function NavigationLogin() {
     return (
         <Stack.Navigator
-        initialRouteName="Profile"
+        initialRouteName="Login"
         headerMode="screen"
         screenOptions={{
           headerTintColor: 'white',

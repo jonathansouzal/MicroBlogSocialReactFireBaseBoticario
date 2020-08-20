@@ -6,14 +6,14 @@ import {
     Platform,
     Image
 } from 'react-native'
-import logo from '../../assets/img/logobcactus.png'
+import logo from '../../assets/img/godzilla.png'
 
 export default function Header() {
     return (
         <View style={styles.container}>
             <View style={styles.rowContainer}>
                 <Image source={logo} style={styles.logo} />
-                <Text style={styles.title}>CactosSocialBlog</Text>
+                <Text style={styles.title}>InstaBzilla</Text>
             </View>
         </View>
     )

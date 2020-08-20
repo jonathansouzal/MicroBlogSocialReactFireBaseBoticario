@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { login } from '../store/actions/userAction'
 import {
     StyleSheet,
     View,
@@ -7,15 +9,17 @@ import {
     TextInput
 } from 'react-native'
 
-export default class Login extends Component {
+class Login extends Component {
 
     state = {
+        nome: 'Temporario',
         email: '',
         password: ''
     }
 
     login = () => {
-        this.props.navigation.navigation('Profile')
+        this.props.onLogin({ ...this.state })
+        this.props.navigation.navigate('Profile')
     }
 
     register = () => {
@@ -23,18 +27,18 @@ export default class Login extends Component {
     }
 
     render() {
-        return(
+        return (
             <View style={styles.container}>
-                <TextInput 
-                    placeholder='Email' 
+                <TextInput
+                    placeholder='Email'
                     style={styles.input}
                     autoFocus={true}
                     keyboardType='email-address'
                     value={this.state.email}
                     onChangeText={email => this.setState({ email })}
                 />
-                <TextInput 
-                    placeholder='Senha' 
+                <TextInput
+                    placeholder='Senha'
                     style={styles.input}
                     secureTextEntry={true}
                     autoFocus={true}
@@ -81,3 +85,11 @@ const styles = StyleSheet.create({
         borderColor: '#333',
     }
 })
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: user => dispatch(login(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

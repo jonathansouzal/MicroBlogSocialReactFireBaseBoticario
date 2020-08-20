@@ -17,10 +17,7 @@ export default class Register extends Component {
    
     render() {
         return (
-            <View style={styles.container}>
-                <TextInput placeholder='Nome' style={styles.input}
-                    autoFocus={true} value={this.state.name}
-                    onChangeText={name => this.setState({ name })} />
+            <View style={styles.container}>                
                 <TextInput placeholder='Email' style={styles.input}
                     keyboardType='email-address' value={this.state.email}
                     onChangeText={email => this.setState({ email })} />
