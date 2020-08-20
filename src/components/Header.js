@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Gravatar } from 'react-native-gravatar'
 import {
     StyleSheet,
     Text,
@@ -8,15 +10,26 @@ import {
 } from 'react-native'
 import logo from '../../assets/img/godzilla.png'
 
-export default function Header() {
-    return (
-        <View style={styles.container}>
-            <View style={styles.rowContainer}>
-                <Image source={logo} style={styles.logo} />
-                <Text style={styles.title}>InstaBzilla</Text>
+class Header extends Component {
+    render() {
+        const name = this.props.name || 'Anonymous'
+        const gravatar = this.props.email ?
+            <Gravatar options={{ email: this.props.email, secure: true }}
+                style={styles.avatar} />
+            : null
+        return (
+            <View style={styles.container}>
+                <View style={styles.rowContainer}>
+                    <Image source={logo} style={styles.image} />
+                    <Text style={styles.title}>Bzilla Family</Text>
+                </View>
+                <View style={styles.userContainer}>
+                    <Text style={styles.user}>{name}</Text>
+                    {gravatar}
+                </View>
             </View>
-        </View>
-    )
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -24,7 +37,10 @@ const styles = StyleSheet.create({
         marginTop: Platform.OS === 'ios' ? 20 : 10,
         padding: 10,
         borderBottomWidth: 1,
-        borderColor: '#0C4700'
+        borderColor: '#0C4700',
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     rowContainer: {
         flexDirection: 'row',
@@ -41,5 +57,27 @@ const styles = StyleSheet.create({
         fontFamily: Platform.OS === 'ios' ? 'Josefin Sans' : 'JosefinSans-Regular',
         fontSize: 24,
         padding: 10
+    },
+    userContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    user: {
+        fontSize: 10,
+        color: '#888',
+    },
+    avatar: {
+        width: 30,
+        height: 30,
+        marginLeft: 10
     }
 })
+
+const mapStateToProps = ({ user }) => {
+    return {
+        email: user.email,
+        name: user.name,
+    }
+}
+
+export default connect(mapStateToProps)(Header)
