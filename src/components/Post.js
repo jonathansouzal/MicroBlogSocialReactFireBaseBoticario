@@ -18,7 +18,7 @@ export default class Post extends Component  {
                     email={this.props.email} 
                     nickname={this.props.nickname} />
                 <Comments comments={this.props.comments} />
-                <AddComment />
+                <AddComment postId={this.props.id} />
             </View>
         )
     }

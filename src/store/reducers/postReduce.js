@@ -1,4 +1,4 @@
-import { ADD_POST } from '../../store/actions/actionTypes'
+import { ADD_POST, ADD_COMMENT } from '../../store/actions/actionTypes'
 
 const initialState = {
     posts: [{
@@ -13,19 +13,6 @@ const initialState = {
             nickname: 'Ana Julia',
             comment: 'Muito Bacana!'
         }]
-    },
-    {
-        id: Math.random(),
-        nickname: 'Gustavo tech',
-        email: 'gustavo@email.com',
-        imagePost: require('../../../assets/img/turismo-rural-paraguai.jpg'),
-        comments: [{
-            nickname: 'João Wall',
-            comment: 'Show!'
-        }, {
-            nickname: 'Maria Julia',
-            comment: 'Muito Bacana mesmo!'
-        }]
     }]
 }
 
@@ -38,8 +25,24 @@ const reducer = (state = initialState, action) => {
                     ...action.payload
                 })
             }
+        case ADD_COMMENT:
+            return {
+                ...state,
+                posts: state.posts.map(post => {
+                    if (post.id === action.payload.postId) {
+                        if (post.comments) {
+                            post.comments = post.comments.concat(
+                                action.payload.comment
+                            )
+                        } else {
+                            post.comments = [action.payload.comment]
+                        }
+                    }
+                    return post
+                })
+            }
         default:
-            return state    
+            return state
     }
 }
 
