@@ -21,7 +21,7 @@ class Header extends Component {
             <View style={styles.container}>
                 <View style={styles.rowContainer}>
                     <Image source={logo} style={styles.image} />
-                    <Text style={styles.title}>Bzilla Family</Text>
+                    <Text style={styles.title}>Bezilla Family</Text>
                 </View>
                 <View style={styles.userContainer}>
                     <Text style={styles.user}>{name}</Text>

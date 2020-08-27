@@ -10,16 +10,17 @@ import Author from './Author'
 import Comments from './Comments'
 import AddComment from './AddComment'
 
-class Post extends Component  {
+class Post extends Component {
     render() {
 
-        const addComment = this.props.name ? <AddComment postId={this.props.id} /> : null
+        const addComment = this.props.name ?
+            <AddComment postId={this.props.id} /> : null
 
         return (
             <View style={styles.container}>
                 <Image source={this.props.imagePost} style={styles.image} />
-                <Author 
-                    email={this.props.email} 
+                <Author
+                    email={this.props.email}
                     nickname={this.props.nickname} />
                 <Comments comments={this.props.comments} />
                 {addComment}
